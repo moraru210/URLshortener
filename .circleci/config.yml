@@ -16,6 +16,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: testing build
+          command: pwd
+      - run:
           name: Install Dependencies
           command: go mod download
       - run:
