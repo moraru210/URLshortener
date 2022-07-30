@@ -4,10 +4,10 @@ RUN mkdir /app
 
 ADD . /app
 
-WORKDIR /app
+WORKDIR /app/src
 
 RUN go mod download
 
-RUN go build -o ./src/main ./src
+RUN go build -o ./main .
 
-CMD ["/app/src/main"]
+CMD ["./main"]
