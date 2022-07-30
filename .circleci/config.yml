@@ -17,9 +17,6 @@ jobs:
       - checkout:
           path: ~/URLshortener
       - run:
-          name: testing build
-          command: ls
-      - run:
           name: Install gcc/g++ libraries
           command: apk add build-base
       - run:
@@ -28,6 +25,22 @@ jobs:
       - run:
           name: Run tests
           command: go test ./shortener
+    deploy:
+      working_directory: ~/URLshortener
+      docker:
+        - image: docker:stable
+      steps:
+        - checkout
+        - run:
+            name: Build Docker image
+            command: docker build -t moraru210/url-shortener:latest
+        -run:
+            name: Push Docker image
+            command: |
+              echo "${DOCKERHUB_PASSWORD}" | base64 -d | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
+              docker push ${DOCKERHUB_USERNAME}/url-shortener:latest
+
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -36,3 +49,8 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - main
