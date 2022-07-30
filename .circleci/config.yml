@@ -34,7 +34,7 @@ jobs:
         - run:
             name: Build Docker image
             command: docker build -t moraru210/url-shortener:latest
-        -run:
+        - run:
             name: Push Docker image
             command: |
               echo "${DOCKERHUB_PASSWORD}" | base64 -d | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
