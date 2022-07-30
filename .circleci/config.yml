@@ -33,7 +33,7 @@ jobs:
       - checkout
       - run:
           name: Build Docker image
-          command: docker build -t moraru210/url-shortener:latest
+          command: docker build -t ${DOCKERHUB_USERNAME}/url-shortener:latest .
       - run:
           name: Push Docker image
           command: |
