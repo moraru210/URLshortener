@@ -21,7 +21,7 @@ jobs:
           command: ls
       - run:
           name: Install gcc/g++ libraries
-          command: apt-get install build-essential
+          command: apk add build-base
       - run:
           name: Install Dependencies
           command: go mod download
