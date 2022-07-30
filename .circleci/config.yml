@@ -33,12 +33,12 @@ jobs:
       - checkout
       - run:
           name: Build Docker image
-          command: docker build -t ${DOCKERHUB_USERNAME}/url-shortener:latest .
+          command: docker build -t ${DOCKER_USERNAME}/url-shortener:latest .
       - run:
           name: Push Docker image
           command: |
-            echo "${DOCKERHUB_PASSWORD}" | base64 -d | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
-            docker push ${DOCKERHUB_USERNAME}/url-shortener:latest
+            echo "${DOCKER_PASSWORD}" | base64 -d | docker login --username "${DOCKER_USERNAME}" --password-stdin
+            docker push ${DOCKER_USERNAME}/url-shortener:latest
 
 
 
