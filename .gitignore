@@ -15,5 +15,3 @@
 # vendor/
 
 .idea/
-src/go.sum
-src/go.mod
