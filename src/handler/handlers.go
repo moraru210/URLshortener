@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"URLshortener/src/shortener"
-	"URLshortener/src/store"
+	"URLshortener/shortener"
+	"URLshortener/store"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"URLshortener/src/handler"
-	"URLshortener/src/store"
+	"URLshortener/handler"
+	"URLshortener/store"
 	"fmt"
 	"github.com/gin-gonic/gin"
 )
