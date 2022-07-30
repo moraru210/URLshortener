@@ -20,6 +20,9 @@ jobs:
           name: testing build
           command: ls
       - run:
+          name: Install gcc/g++ libraries
+          command: apt-get install build-essential
+      - run:
           name: Install Dependencies
           command: go mod download
       - run:
