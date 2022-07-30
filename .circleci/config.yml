@@ -26,11 +26,12 @@ jobs:
           name: Run tests
           command: go test ./shortener
   deploy:
-    working_directory: ~/URLshortener
+    working_directory: ~/URLshortener/src
     docker:
       - image: docker:stable
     steps:
-      - checkout
+      - checkout:
+          path: ~/URLshortener
       - setup_remote_docker:
             version: 20.10.14
       - run:
