@@ -1,0 +1,18 @@
+import './App.css';
+import UrlShortener from './UrlShortener';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+function App() {
+  return (
+    <div className="App">
+      <div className="center">
+        <h1>
+          Please input link you want to shorten Below:
+        </h1>
+        <UrlShortener/>
+      </div>
+    </div>
+  );
+}
+
+export default App;
