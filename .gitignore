@@ -16,7 +16,7 @@
 
 .idea/
 
-# Below are frontend .gitignore
+# Below
 # dependencies
 /node_modules
 /.pnp
