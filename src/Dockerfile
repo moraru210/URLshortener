@@ -10,4 +10,6 @@ RUN go mod download
 
 RUN go build -o ./main .
 
+EXPOSE 9808
+
 CMD ["./main"]
