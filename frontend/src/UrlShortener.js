@@ -6,7 +6,7 @@ function UrlShortener() {
   const [show, setShow] = useState(false);
   const [value, setValue] = useState("");
 
-	//const [shortLink, setShortLink] = useState("");
+	const [shortLink, setShortLink] = useState("");
 
   function handleClose() {
     setShow(false);
@@ -14,14 +14,18 @@ function UrlShortener() {
 	}
   
 	async function handleShow() {
-		const response = await fetch('http://127.0.0.1:56148/create-short-url', {
+		await fetch('http://127.0.0.1:51956/create-short-url', 
+		{
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', '': 'false' },
-        body: JSON.stringify({ long_url: {value}, user_id: "basic" }),
-    });
-    console.log(await response.json());
-		// resp = response.json();
-		// setShortLink(resp.short_url);
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ long_url: value, user_id: 'e0dba740-fc4b-4977-872c-d360239e6b10' }),
+    })
+		.then(response => response.json())
+		.then(function(json) {
+			console.log(json);
+			setShortLink(json['short_url']);
+		});
+
 		setShow(true);
 	}
 
@@ -37,7 +41,7 @@ function UrlShortener() {
                 </div>
             </label>
             <div style={{ padding: "1vh" }}>
-            <Button variant="primary" onClick={handleShow}>
+            <Button style={{"backgroundColor": "brown", "borderColor": "brown"}} onClick={handleShow}>
                 Generate Short Link
             </Button>
             </div>
@@ -52,9 +56,13 @@ function UrlShortener() {
             <Modal.Header closeButton>
             <Modal.Title>Link generated below:</Modal.Title>
             </Modal.Header>
-            <Modal.Body>{value}</Modal.Body>
+            <Modal.Body>
+							<a href={"http://127.0.0.1:51956/" + shortLink}>
+								http://127.0.0.1:51956/{shortLink}
+								</a>
+						</Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button onClick={handleClose}>
                 Close
             </Button>
             </Modal.Footer>
