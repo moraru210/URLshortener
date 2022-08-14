@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className="center">
-        <h1>
+        <h1 style={{"color":"white"}}>
           Please input link you want to shorten below:
         </h1>
         <UrlShortener/>
