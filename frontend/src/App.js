@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <div className="center">
         <h1>
-          Please input link you want to shorten Below:
+          Please input link you want to shorten below:
         </h1>
         <UrlShortener/>
       </div>

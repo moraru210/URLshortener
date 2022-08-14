@@ -6,11 +6,24 @@ function UrlShortener() {
   const [show, setShow] = useState(false);
   const [value, setValue] = useState("");
 
-  const handleClose = () => {
-      setShow(false);
-      handleClear();
-    }
-  const handleShow = () => setShow(true);
+	//const [shortLink, setShortLink] = useState("");
+
+  function handleClose() {
+    setShow(false);
+    handleClear();
+	}
+  
+	async function handleShow() {
+		const response = await fetch('http://127.0.0.1:56148/create-short-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', '': 'false' },
+        body: JSON.stringify({ long_url: {value}, user_id: "basic" }),
+    });
+    console.log(await response.json());
+		// resp = response.json();
+		// setShortLink(resp.short_url);
+		setShow(true);
+	}
 
   const handleInput = (e) => setValue(e.target.value);
   const handleClear = () => setValue("");
@@ -37,7 +50,7 @@ function UrlShortener() {
         centered
         >
             <Modal.Header closeButton>
-            <Modal.Title>Link Generated Below:</Modal.Title>
+            <Modal.Title>Link generated below:</Modal.Title>
             </Modal.Header>
             <Modal.Body>{value}</Modal.Body>
             <Modal.Footer>
